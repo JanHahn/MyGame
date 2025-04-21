@@ -15,11 +15,11 @@ public class Game1 : Game
 
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
+    private HeroGenerator heroGenerator;
     private Hero _myHero;
     private Texture2D backgroundTexture;
     //private Texture2D mojaTekstura;
     private Vector2 _obstaclePosition = new Vector2(800, BOTTOM_LEVEL-150);
-    private Vector2 _kalmarPositon = new Vector2(100, 100);
     private Vector2 backGroundPosition = new Vector2(0,0);
 
     public Game1()
@@ -32,8 +32,10 @@ public class Game1 : Game
 
     protected override void LoadContent()
     {
+        heroGenerator = new HeroGenerator();
+        heroGenerator.GraphicsDevice_ = GraphicsDevice;
         _spriteBatch = new SpriteBatch(GraphicsDevice);
-        _myHero = new Hero(Texture2D.FromFile(GraphicsDevice, "/home/jh/my_shit/game_csharp/game/MyGame/Content/HerosSprites/Samurai/Run.png"), new Vector2(500, BOTTOM_LEVEL));
+        _myHero = heroGenerator.generateHero();
         backgroundTexture = Texture2D.FromFile(GraphicsDevice, "/home/jh/my_shit/game_csharp/game/MyGame/Content/BackGrounds/DayBasic.png");
 
         // Color[] obstacleData = new Color[50 * 200];
@@ -43,7 +45,6 @@ public class Game1 : Game
 
     protected override void Update(GameTime gameTime)
     {
-        
         _myHero.Update(gameTime);
         base.Update(gameTime);
     }
@@ -55,8 +56,6 @@ public class Game1 : Game
         _spriteBatch.Begin();
         _spriteBatch.Draw(backgroundTexture, backGroundPosition, Color.White);
         _myHero.Draw(_spriteBatch);
-        //_spriteBatch.Draw(_playerTexture, _playerPosition, Color.White);
-        //_spriteBatch.Draw(mojaTekstura, _kalmarPositon, Color.White);
         _spriteBatch.End();
 
         base.Draw(gameTime);

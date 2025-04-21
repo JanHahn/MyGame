@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -6,23 +7,12 @@ using Microsoft.Xna.Framework.Input;
 
 namespace MyGame;
 
-public struct ActionsPaths {
-    string Idle; int Idle_frames;
-    string Run; int Run_frames;
-    string Jump; int Jump_frames;
-    string Walk; int Walk_frames;
-}
-
 public class Hero
 {
     private Vector2 position_;
-    private Texture2D texture_;
-    private ActionsPaths actions_;
-    public Texture2D Texture { 
-        get { return texture_; }
-        set { texture_ = value; } 
-    }
-    public ActionsPaths Actions  { 
+    private Dictionary<string, (Texture2D, int)> actions_;
+
+    public Dictionary<string, (Texture2D, int)> Actions { 
         get { return actions_; }
         set { actions_ = value; } 
     }
@@ -31,37 +21,52 @@ public class Hero
         set { position_ = value; }
     }
 
-    bool flying = false;
+    private Texture2D activeTexture;
     float acceleration = 5000;
     float speed = 0f; // Piksele na sekundę
 
     
-    int frameWidth;         // Szerokość jednej klatki
-    int frameHeight;        // Wysokość jednej klatki
+    int frameWidth = 1;         // Szerokość jednej klatki
+    int frameHeight = 1;        // Wysokość jednej klatki
     int currentFrame = 0;   // Aktualna klatka
     float timer = 0f;       // Licznik czasu
-    float interval = 0.1f;  // Ile sekund pokazujemy jedną klatkę
-    int totalFrames = 8;    // Ile wszystkich klatek masz w pliku
-    
+    float interval = 0.05f;  // Ile sekund pokazujemy jedną klatkę
+    int totalFrames = 6;    // Ile wszystkich klatek masz w pliku
+
+
+    bool isLeft = false;
+    bool RunningLeft = false;
+    bool RunningRight = false;
+    bool idleNow = true;
+    bool flying = false;
+
 
     const float BOTTOM_LEVEL = 780f; // <- dodajemy tę stałą
 
-    public Hero(Texture2D texture, Vector2 position)
+    public Hero(Dictionary<string, (Texture2D, int)> actions, Vector2 position)
     {
-        texture_ = texture;
+        actions_ = actions;
         position_ = position;
-        frameWidth = texture_.Width/totalFrames;
-        frameHeight = texture_.Height;
+        activeTexture = actions["Idle"].Item1;
+        totalFrames = actions["Idle"].Item2;
+        frameWidth = activeTexture.Width/totalFrames;
+        frameHeight = activeTexture.Height;
     }
 
     public void Draw(SpriteBatch spriteBatch)
     {
         Rectangle sourceRectangle = new Rectangle(frameWidth * currentFrame, 0, frameWidth, frameHeight);
-        spriteBatch.Draw(Texture, Position, sourceRectangle, Color.White);
+        if (isLeft){
+            spriteBatch.Draw(activeTexture, Position, sourceRectangle, Color.Red, 0f, Vector2.Zero, 1f, SpriteEffects.FlipHorizontally, 0f);    
+        }
+        else{
+            spriteBatch.Draw(activeTexture, Position, sourceRectangle, Color.Black);
+        }
+        
     }
 
     public void Update(GameTime gameTime){
-
+        
         timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
         if (timer >= interval)
         {
@@ -70,16 +75,42 @@ public class Hero
         }
 
         var keyboard = Keyboard.GetState();
-        if (keyboard.IsKeyDown(Keys.Right)) position_.X += 10;
-        if (keyboard.IsKeyDown(Keys.Left)) position_.X -= 10;
+        if (keyboard.IsKeyDown(Keys.Right)){
+            if (!RunningRight){
+                activeTexture = actions_["Run"].Item1;
+                totalFrames = actions_["Run"].Item2;
+                isLeft = false;
+                RunningRight = true;
+                idleNow = false;
+
+            }
+            position_.X += 10;
+        } 
+        else if (keyboard.IsKeyDown(Keys.Left)){
+            if (!RunningLeft){
+                activeTexture = actions_["Run"].Item1;
+                totalFrames = actions_["Run"].Item2;
+                isLeft = true;
+                RunningLeft = true;
+                idleNow = false;
+            }
+            position_.X -= 10;
+        }
+        else {
+            if (!idleNow){
+                activeTexture = actions_["Idle"].Item1;
+                totalFrames = actions_["Idle"].Item2;
+                RunningLeft = false;
+                RunningRight = false;
+                idleNow = true;
+            }
+        }
+
+
         if (keyboard.IsKeyDown(Keys.Up) && speed == 0){
             flying = true; 
             speed = 2000;
         }
-        else {
-            
-        }
- 
 
         if (flying){
             
@@ -95,6 +126,4 @@ public class Hero
             }
             }
         }
-
-        
 }
