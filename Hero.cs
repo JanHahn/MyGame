@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace MyGame;
 
-public class Hero
+public class Hero: IPrintable
 {
     private Vector2 position_;
     private Dictionary<string, (Texture2D, int)> actions_;
@@ -22,7 +22,7 @@ public class Hero
     }
 
     private Texture2D activeTexture;
-    float acceleration = 5000;
+    float acceleration = 8000;
     float speed = 0f; // Piksele na sekundę
 
     
@@ -41,7 +41,7 @@ public class Hero
     bool flying = false;
 
 
-    const float BOTTOM_LEVEL = 780f; // <- dodajemy tę stałą
+    const float BOTTOM_LEVEL = 850f; // <- dodajemy tę stałą
 
     public Hero(Dictionary<string, (Texture2D, int)> actions, Vector2 position)
     {
@@ -57,10 +57,10 @@ public class Hero
     {
         Rectangle sourceRectangle = new Rectangle(frameWidth * currentFrame, 0, frameWidth, frameHeight);
         if (isLeft){
-            spriteBatch.Draw(activeTexture, Position, sourceRectangle, Color.Red, 0f, Vector2.Zero, 1f, SpriteEffects.FlipHorizontally, 0f);    
+            spriteBatch.Draw(activeTexture, Position, sourceRectangle, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.FlipHorizontally, 0f);    
         }
         else{
-            spriteBatch.Draw(activeTexture, Position, sourceRectangle, Color.Black);
+            spriteBatch.Draw(activeTexture, Position, sourceRectangle, Color.White);
         }
         
     }
@@ -75,18 +75,17 @@ public class Hero
         }
 
         var keyboard = Keyboard.GetState();
-        if (keyboard.IsKeyDown(Keys.Right)){
+        if (keyboard.IsKeyDown(Keys.Right) && !keyboard.IsKeyDown(Keys.Left)){
             if (!RunningRight){
                 activeTexture = actions_["Run"].Item1;
                 totalFrames = actions_["Run"].Item2;
                 isLeft = false;
                 RunningRight = true;
                 idleNow = false;
-
             }
             position_.X += 10;
         } 
-        else if (keyboard.IsKeyDown(Keys.Left)){
+        else if (keyboard.IsKeyDown(Keys.Left) && !keyboard.IsKeyDown(Keys.Right)){
             if (!RunningLeft){
                 activeTexture = actions_["Run"].Item1;
                 totalFrames = actions_["Run"].Item2;

@@ -19,10 +19,10 @@ public class HeroGenerator
     public Hero generateHero(){
 
         Dictionary<string, (Texture2D, int)> acitons = new Dictionary<string, (Texture2D, int)>();;
-        acitons.Add("Idle", (Texture2D.FromFile(graphicsDevice_, "/home/jh/my_shit/game_csharp/game/MyGame/Content/HerosSprites/Samurai/Idle.png"), 6));
-        acitons.Add("Run", (Texture2D.FromFile(graphicsDevice_, "/home/jh/my_shit/game_csharp/game/MyGame/Content/HerosSprites/Samurai/Run.png"), 8));
-        acitons.Add("Jump", (Texture2D.FromFile(graphicsDevice_, "/home/jh/my_shit/game_csharp/game/MyGame/Content/HerosSprites/Samurai/Jump.png"), 9));
-        acitons.Add("Attack", (Texture2D.FromFile(graphicsDevice_, "/home/jh/my_shit/game_csharp/game/MyGame/Content/HerosSprites/Samurai/Attack_1.png"), 4));
+        acitons.Add("Idle", (Texture2D.FromFile(graphicsDevice_, "/home/jh/my_shit/game_csharp/game/MyGame/Content/HerosSprites/SamuraiArcher/Idle.png"), 9));
+        acitons.Add("Run", (Texture2D.FromFile(graphicsDevice_, "/home/jh/my_shit/game_csharp/game/MyGame/Content/HerosSprites/SamuraiArcher/Run.png"), 8));
+        acitons.Add("Jump", (Texture2D.FromFile(graphicsDevice_, "/home/jh/my_shit/game_csharp/game/MyGame/Content/HerosSprites/SamuraiArcher/Jump.png"), 9));
+        acitons.Add("Attack", (Texture2D.FromFile(graphicsDevice_, "/home/jh/my_shit/game_csharp/game/MyGame/Content/HerosSprites/SamuraiArcher/Attack_1.png"), 4));
         
         Hero hero = new Hero(acitons, new Vector2(500, 1080 - 400)); 
         return hero;
