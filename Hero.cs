@@ -75,6 +75,29 @@ public class Hero: IPrintable
         }
 
         var keyboard = Keyboard.GetState();
+
+
+        Console.WriteLine(flying);
+        // if (flying){
+        //     if (keyboard.IsKeyDown(Keys.Right) && !keyboard.IsKeyDown(Keys.Left)){
+        //         if (!RunningRight){
+        //             isLeft = false;
+        //             RunningRight = true;
+        //             idleNow = false;
+        //         }
+        //     position_.X += 10;
+        // }
+        //     else if (keyboard.IsKeyDown(Keys.Left) && !keyboard.IsKeyDown(Keys.Right)){
+        //         if (!RunningLeft){
+        //             isLeft = true;
+        //             RunningLeft = true;
+        //             idleNow = false;
+        //         }
+        //     position_.X -= 10;
+        //     }
+        // }
+
+
         if (keyboard.IsKeyDown(Keys.Right) && !keyboard.IsKeyDown(Keys.Left)){
             if (!RunningRight){
                 activeTexture = actions_["Run"].Item1;
@@ -84,7 +107,7 @@ public class Hero: IPrintable
                 idleNow = false;
             }
             position_.X += 10;
-        } 
+        }
         else if (keyboard.IsKeyDown(Keys.Left) && !keyboard.IsKeyDown(Keys.Right)){
             if (!RunningLeft){
                 activeTexture = actions_["Run"].Item1;
@@ -97,7 +120,7 @@ public class Hero: IPrintable
         }
         else {
             if (!idleNow){
-                activeTexture = actions_["Idle"].Item1;
+                activeTexture =actions_["Idle"].Item1;
                 totalFrames = actions_["Idle"].Item2;
                 RunningLeft = false;
                 RunningRight = false;
@@ -105,11 +128,11 @@ public class Hero: IPrintable
             }
         }
 
-
-        if (keyboard.IsKeyDown(Keys.Up) && speed == 0){
-            flying = true; 
+        if (keyboard.IsKeyDown(Keys.Up) && flying == false){
+            flying = true;
             speed = 2000;
-        }
+        } 
+
 
         if (flying){
             
@@ -122,6 +145,7 @@ public class Hero: IPrintable
             {
                 position_.Y = BOTTOM_LEVEL;
                 speed = 0;
+                flying = false;
             }
             }
         }

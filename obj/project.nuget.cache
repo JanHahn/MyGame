@@ -1,15 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "1mxd8P/3sqEhUvyCaE+MDThdh1RL8M5mQ9WIBHDlRiJDB48vjIJChfkAM1Hh+bVB934RVHCNupRVeg9X9LMoUA==",
+  "dgSpecHash": "1aVKPik+4U93NP/cV7W7mZK9a3n+RlD+/oUzO6KoN7sKXnyCn1D0niW+agUAKL69ChzEHddOEI4rqlcXI4fJxQ==",
   "success": true,
-  "projectFilePath": "/home/jh/my_shit/game_csharp/game/MyGame/MyGame.csproj",
+  "projectFilePath": "C:\\Users\\janek\\my_shit\\firstGame\\MyGame\\MyGame.csproj",
   "expectedPackageFiles": [
-    "/home/jh/.nuget/packages/monogame.content.builder.task/3.8.2.1105/monogame.content.builder.task.3.8.2.1105.nupkg.sha512",
-    "/home/jh/.nuget/packages/monogame.framework.desktopgl/3.8.2.1105/monogame.framework.desktopgl.3.8.2.1105.nupkg.sha512",
-    "/home/jh/.nuget/packages/monogame.library.sdl/2.26.5.5/monogame.library.sdl.2.26.5.5.nupkg.sha512",
-    "/home/jh/.nuget/packages/nvorbis/0.10.4/nvorbis.0.10.4.nupkg.sha512",
-    "/home/jh/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
-    "/home/jh/.nuget/packages/system.valuetuple/4.5.0/system.valuetuple.4.5.0.nupkg.sha512"
+    "C:\\Users\\janek\\.nuget\\packages\\monogame.content.builder.task\\3.8.2.1105\\monogame.content.builder.task.3.8.2.1105.nupkg.sha512",
+    "C:\\Users\\janek\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.2.1105\\monogame.framework.desktopgl.3.8.2.1105.nupkg.sha512",
+    "C:\\Users\\janek\\.nuget\\packages\\monogame.library.sdl\\2.26.5.5\\monogame.library.sdl.2.26.5.5.nupkg.sha512",
+    "C:\\Users\\janek\\.nuget\\packages\\nvorbis\\0.10.4\\nvorbis.0.10.4.nupkg.sha512",
+    "C:\\Users\\janek\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\janek\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }

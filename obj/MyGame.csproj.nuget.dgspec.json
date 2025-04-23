@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/jh/my_shit/game_csharp/game/MyGame/MyGame.csproj": {}
+    "C:\\Users\\janek\\my_shit\\firstGame\\MyGame\\MyGame.csproj": {}
   },
   "projects": {
-    "/home/jh/my_shit/game_csharp/game/MyGame/MyGame.csproj": {
+    "C:\\Users\\janek\\my_shit\\firstGame\\MyGame\\MyGame.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/jh/my_shit/game_csharp/game/MyGame/MyGame.csproj",
+        "projectUniqueName": "C:\\Users\\janek\\my_shit\\firstGame\\MyGame\\MyGame.csproj",
         "projectName": "MyGame",
-        "projectPath": "/home/jh/my_shit/game_csharp/game/MyGame/MyGame.csproj",
-        "packagesPath": "/home/jh/.nuget/packages/",
-        "outputPath": "/home/jh/my_shit/game_csharp/game/MyGame/obj/",
+        "projectPath": "C:\\Users\\janek\\my_shit\\firstGame\\MyGame\\MyGame.csproj",
+        "packagesPath": "C:\\Users\\janek\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\janek\\my_shit\\firstGame\\MyGame\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/jh/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\janek\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -63,7 +63,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.114/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.114/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
