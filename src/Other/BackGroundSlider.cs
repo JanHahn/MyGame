@@ -10,6 +10,8 @@ using MyGame;
 
 public class BackGroundSlider: IPrintable{
 
+    public Vector2 Position {get; set;}
+
     private List<Texture2D> backGroundLayers_;
     private List<float> backGroundSpeedFactors_;
     private Hero hero_;
@@ -20,8 +22,11 @@ public class BackGroundSlider: IPrintable{
     private int leftWrapPoint;
     private int shift = 0;
     
-
+    
     public BackGroundSlider(List<Texture2D> backGroundLayers, List<float> backGroundSpeedFactors, Hero hero,int screenWidth, int screenHeight, Vector2 scale ){
+
+        Position = new Vector2(0,0);
+
         backGroundLayers_ = backGroundLayers;
         backGroundSpeedFactors_ =  backGroundSpeedFactors;
         hero_ = hero;
@@ -29,11 +34,11 @@ public class BackGroundSlider: IPrintable{
         screenWidth_ = screenWidth;
         scale_ = scale;
 
-        rightWrapPoint = (int)Math.Round(screenWidth_ * 0.90);
-        leftWrapPoint = (int)(Math.Round(screenWidth_ * 0.1) - hero_.Actions["Idle"].Item1.Width/8);
+        rightWrapPoint = (int)Math.Round(screenWidth_ * 0.60);
+        leftWrapPoint = (int)(Math.Round(screenWidth_ * 0.1) - hero_.Width);
         Console.WriteLine(leftWrapPoint);
     }
-    
+
 
     public void Draw(SpriteBatch spriteBatch){
 
