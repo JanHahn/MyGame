@@ -50,3 +50,4 @@ c:\Users\janek\my_shit\firstGame\MyGame\obj\Debug\net8.0\refint\MyGame.dll
 c:\Users\janek\my_shit\firstGame\MyGame\obj\Debug\net8.0\MyGame.pdb
 C:\Users\janek\my_shit\firstGame\MyGame\obj\Debug\net8.0\MyGame.genruntimeconfig.cache
 C:\Users\janek\my_shit\firstGame\MyGame\obj\Debug\net8.0\ref\MyGame.dll
+c:\Users\janek\my_shit\firstGame\MyGame\bin\Debug\net8.0\Newtonsoft.Json.dll

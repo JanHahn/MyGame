@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "1aVKPik+4U93NP/cV7W7mZK9a3n+RlD+/oUzO6KoN7sKXnyCn1D0niW+agUAKL69ChzEHddOEI4rqlcXI4fJxQ==",
+  "dgSpecHash": "hisfLkHvsvwP6V38O5wznIaTO117ijYS7MJ/FA1U6oL/0MplhOYnNoe+441DyBi49faElBUWZ/sejFYRk/QTSA==",
   "success": true,
   "projectFilePath": "C:\\Users\\janek\\my_shit\\firstGame\\MyGame\\MyGame.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\janek\\.nuget\\packages\\monogame.content.builder.task\\3.8.2.1105\\monogame.content.builder.task.3.8.2.1105.nupkg.sha512",
     "C:\\Users\\janek\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.2.1105\\monogame.framework.desktopgl.3.8.2.1105.nupkg.sha512",
     "C:\\Users\\janek\\.nuget\\packages\\monogame.library.sdl\\2.26.5.5\\monogame.library.sdl.2.26.5.5.nupkg.sha512",
+    "C:\\Users\\janek\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\janek\\.nuget\\packages\\nvorbis\\0.10.4\\nvorbis.0.10.4.nupkg.sha512",
     "C:\\Users\\janek\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
     "C:\\Users\\janek\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512"

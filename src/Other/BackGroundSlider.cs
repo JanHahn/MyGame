@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata;
 using System.Reflection.Metadata.Ecma335;
 using System.Security.Cryptography;
 using Microsoft.Xna.Framework;
@@ -21,6 +22,14 @@ public class BackGroundSlider: IPrintable{
     private int rightWrapPoint;
     private int leftWrapPoint;
     private int shift = 0;
+
+    List<ICollidable> testList;
+    public List<ICollidable> TestList { 
+        get { return testList; }
+        set { testList = value; }
+     }
+
+    public List<IPrintable> TestList2 { get; set; }
     
     
     public BackGroundSlider(List<Texture2D> backGroundLayers, List<float> backGroundSpeedFactors, Hero hero,int screenWidth, int screenHeight, Vector2 scale ){
@@ -34,8 +43,8 @@ public class BackGroundSlider: IPrintable{
         screenWidth_ = screenWidth;
         scale_ = scale;
 
-        rightWrapPoint = (int)Math.Round(screenWidth_ * 0.60);
-        leftWrapPoint = (int)(Math.Round(screenWidth_ * 0.1) - hero_.Width);
+        rightWrapPoint = (int)Math.Round(screenWidth_ * 0.51);
+        leftWrapPoint = (int)(Math.Round(screenWidth_ * 0.50) - hero_.Width);
         Console.WriteLine(leftWrapPoint);
     }
 
@@ -66,6 +75,19 @@ public class BackGroundSlider: IPrintable{
             hero_.Position = pos;
 
             shift += ds;
+
+            // foreach (var obstacle in testList){
+            //     if (obstacle == hero_){
+            //         continue;
+            //     }
+            //     obstacle.Position = new Vector2(obstacle.Position.X - ds, obstacle.Position.Y); 
+            // }
+            foreach (var obstacle in TestList2){
+                if (obstacle == hero_){
+                    continue;
+                }
+                obstacle.Position = new Vector2(obstacle.Position.X - ds, obstacle.Position.Y); 
+            }
         }
 
 
@@ -79,6 +101,20 @@ public class BackGroundSlider: IPrintable{
             hero_.Position = pos;
 
             shift -= ds;
+
+            // foreach (var obstacle in testList){
+            //     if (obstacle == hero_){
+            //         continue;
+            //     }
+            //     obstacle.Position = new Vector2(obstacle.Position.X + ds, obstacle.Position.Y); 
+            // }
+            foreach (var obstacle in TestList2){
+                if (obstacle == hero_){
+                    continue;
+                }
+                obstacle.Position = new Vector2(obstacle.Position.X + ds, obstacle.Position.Y); 
+            }
+
         }
     }
 }

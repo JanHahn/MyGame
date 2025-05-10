@@ -23,7 +23,7 @@ public class HeroGenerator
         string IdlePath = Path.Combine(contentRoot, "Content/HerosSprites/Batman.png");
         string RunPath = Path.Combine(contentRoot, "Content/HerosSprites/SamuraiArcher/Run.png");
         string JumpPath = Path.Combine(contentRoot, "Content/HerosSprites/SamuraiArcher/Jump.png");
-        string Attack_1Path = Path.Combine(contentRoot, "Content/HerosSprites/SamuraiArcher/Attack_1.png");
+        string Attack_1Path = Path.Combine(contentRoot, "Content/HerosSprites/SamuraiArcher/Arrow.png");
 
         Texture2D IdleTexture = Texture2D.FromFile(graphicsDevice_, IdlePath);
 

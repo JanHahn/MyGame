@@ -106,7 +106,7 @@ public class CollisionManager {
                     return_collidable = collisionOccuredObject;
                 }
             }
-            movebleObject.Position = new Vector2(movebleObject.Position.X, return_collidable.Position.Y + movebleObject.Height);
+            movebleObject.Position = new Vector2(movebleObject.Position.X, return_collidable.Position.Y + return_collidable.Height);
             return true;
         }
         return false;

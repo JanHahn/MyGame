@@ -6,7 +6,6 @@ using System.IO;
 using System.Collections.Generic;
 
 
-
 namespace MyGame;
 
 public class Game1 : Game

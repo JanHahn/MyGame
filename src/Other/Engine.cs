@@ -23,7 +23,6 @@ public class Engine {
     private Hero myHero_;
     private Hero myHero_2;
     private BackGroundSlider backGroundSlider_;
-    private Texture2D obstacle_; //for tests
 
 
     //Stores things to be diplayed at the moment (they are in screen range)
@@ -41,6 +40,10 @@ public class Engine {
         graphics_ = graphics;
         spriteBatch_ = spriteBatch;
         graphicsDevice_ = graphicsDevice;
+
+
+        //List things to be printed
+        printableAll_ = new List<IPrintable>();
 
 
         //Hero 1
@@ -62,13 +65,15 @@ public class Engine {
 
 
 
-
+        //Inputs Control
         inputControll_2 = new PlayerInputControll();
         inputControll_2.MoveLeft = Keys.Left;
         inputControll_2.MoveRight = Keys.Right;
         inputControll_2.Jump = Keys.Up;
 
 
+
+        //Background slider
         Texture2D backgroundTexture;
         Texture2D backgroundTexture2;
         Texture2D backgroundTexture3;
@@ -97,14 +102,22 @@ public class Engine {
         (float)graphics_.PreferredBackBufferHeight / backgroundTexture.Height);
         backGroundSlider_ = new BackGroundSlider(backGroundLayers, speedFactors, myHero_, graphics_.PreferredBackBufferWidth, graphics_.PreferredBackBufferHeight, backgroundScale);
 
+
         collisionManager_ = new CollisionManager();
         collisionManager_.Add(myHero_);
         collisionManager_.Add(myHero_2);
 
+        backGroundSlider_.TestList = collisionManager_.CollidableObjects;
+        backGroundSlider_.TestList2 = printableAll_;
+
         gravitation_ = new Gravitation(collisionManager_);
 
 
-        //printableInRange_.Add(myHero_);
+        //Castle
+        Castle myCastle = new Castle(collisionManager_, printableAll_, graphicsDevice_);
+
+
+        //printableInRange_.Add(myCastle);
     }
 
 
@@ -112,15 +125,16 @@ public class Engine {
         backGroundSlider_.Update(gameTime);
         inputControll_.checkInput(myHero_, gameTime, gravitation_, collisionManager_);
         inputControll_2.checkInput(myHero_2, gameTime, gravitation_, collisionManager_);
+        //GameWorld.update(); -> zrobić coś takiego rzeby było czytelniej tutaj
         gravitation_.Update(gameTime);
     }
 
 
     public void Draw(GameTime gameTime){
         backGroundSlider_.Draw(spriteBatch_);
-        // foreach (IPrintable gameObject in printableInRange_){
-        //     gameObject.Draw(spriteBatch_);
-        // }
+        foreach (IPrintable gameObject in printableAll_){
+            gameObject.Draw(spriteBatch_);
+        }
         myHero_.Draw(spriteBatch_);
         myHero_2.Draw(spriteBatch_);
     }
