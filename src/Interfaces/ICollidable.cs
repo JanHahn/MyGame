@@ -13,7 +13,7 @@ namespace MyGame;
     public interface ICollidable
     {
         public Vector2 Position { get; set; }
-        public int Width { get; set; }
-        public int Height { get; set; }
+        public int Width { get; }
+        public int Height { get; }
 
     }

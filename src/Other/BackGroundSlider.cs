@@ -43,8 +43,8 @@ public class BackGroundSlider: IPrintable{
         screenWidth_ = screenWidth;
         scale_ = scale;
 
-        rightWrapPoint = (int)Math.Round(screenWidth_ * 0.51);
-        leftWrapPoint = (int)(Math.Round(screenWidth_ * 0.50) - hero_.Width);
+        rightWrapPoint = (int)Math.Round(screenWidth_ * 0.90);
+        leftWrapPoint = (int)(Math.Round(screenWidth_ * 0.10) - hero_.Width);
         Console.WriteLine(leftWrapPoint);
     }
 

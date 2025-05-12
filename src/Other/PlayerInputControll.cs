@@ -40,6 +40,8 @@ public class PlayerInputControll{
 
 
     private float movementSpeed_ = 10;
+    private bool rightButtonHoldFlag;
+    private bool leftButtonHoldFlag;
 
 
 
@@ -59,15 +61,19 @@ public class PlayerInputControll{
         if (keyboard.IsKeyDown(moveLeft_) && !keyboard.IsKeyDown(moveRight_)){
             player.Position = new Vector2(player.Position.X - movementSpeed_, player.Position.Y);
             collisionManager.RightCorrection(player);
-            if (!player.IsFalling){
+            if (!player.IsFalling && leftButtonHoldFlag){
                 //Włączamy sprite aktywny do chodzenia w lewo 
+                player.SpriiteAnimator.IsLeft = true;
+                player.SpriiteAnimator.ChangeState(HeroActions.Run);
             }
         }
         if (keyboard.IsKeyDown(moveRight_) && !keyboard.IsKeyDown(moveLeft_)){
             player.Position = new Vector2(player.Position.X + movementSpeed_, player.Position.Y);
             collisionManager.LeftCorrection(player);
-            if (!player.IsFalling){
-                //Włączamy sprite aktywny do chodzenia w prawo  
+            if (!player.IsFalling && !rightButtonHoldFlag){
+                //Włączamy sprite aktywny do chodzenia w prawo 
+                player.SpriiteAnimator.IsLeft = false;
+                player.SpriiteAnimator.ChangeState(HeroActions.Run);
             }
         }
 

@@ -10,7 +10,11 @@ namespace MyGame;
 public class Hero: IFallingObject, IPrintable, ICollidable
 {
 
-    private SpriteAnimator spriteAnimator_;
+    private HeroSpriiteAnimator spriteAnimator_;
+    public HeroSpriiteAnimator SpriiteAnimator {
+        get { return spriteAnimator_; }
+        set { spriteAnimator_ = value; }
+    }
 
     private Texture2D activeTexture_;
     public Texture2D ActiveTexture{
@@ -32,22 +36,27 @@ public class Hero: IFallingObject, IPrintable, ICollidable
         set { position_ = value; }
     }
 
-    public int Width { get; set; }
-    public int Height { get; set; }
+    public int Width { 
+        get { return activeTexture_.Width; }
+        }
+    public int Height {
+        get { return activeTexture_.Height; }
+        }
 
-    public Hero(SpriteAnimator spriteAnimator)
+    public Hero(HeroSpriiteAnimator spriteAnimator)
     {
         spriteAnimator_ = spriteAnimator;
         fallingSpeed_ = 0;
         position_ = new Vector2(300, 1000);
-        Width = 20;
-        Height = 20;
-        //Width = activeTexture_.Width;
-        //Height = activeTexture_.Height;
     }
 
     public void Draw(SpriteBatch spriteBatch)
     {
-        spriteBatch.Draw(activeTexture_, position_, Color.White);
+        if (spriteAnimator_.IsLeft){
+            spriteBatch.Draw(activeTexture_, position_, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.FlipHorizontally, 0f);
+        }
+        else{
+            spriteBatch.Draw(activeTexture_, position_, Color.White);
+        }
     }
 }

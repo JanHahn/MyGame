@@ -48,24 +48,21 @@ public class Engine {
 
         //Hero 1
         inputControll_ = new PlayerInputControll();
-
-        HeroGenerator heroGenerator = new HeroGenerator();
-        heroGenerator.GraphicsDevice_ = graphicsDevice;
-        myHero_ = heroGenerator.generateHero();
+        Texture2D placeholderTexture = new Texture2D(graphicsDevice_, 1, 1); // mały pusty placeholder
+        myHero_ = new Hero(new SamuraiArcher(placeholderTexture, graphicsDevice_));
         myHero_.Position = new Vector2(600, 0);
 
 
         //Hero 2
-        myHero_2 = heroGenerator.generateHero();
+        Texture2D placeholderTexture2 = new Texture2D(graphicsDevice_, 1, 1); // mały pusty placeholder
+        myHero_2 = new Hero(new SamuraiArcher(placeholderTexture2, graphicsDevice_));
         myHero_2.Position = new Vector2(300, 500);
         string contentRoot = AppContext.BaseDirectory;
         //string RunPath = Path.Combine(contentRoot, "Content/HerosSprites/kalamarnica.png");
         //Texture2D IdleTexture = Texture2D.FromFile(graphicsDevice_, RunPath);
         //myHero_2.ActiveTexture = IdleTexture;
 
-
-
-        //Inputs Control
+        //Inputs Control for hero 2
         inputControll_2 = new PlayerInputControll();
         inputControll_2.MoveLeft = Keys.Left;
         inputControll_2.MoveRight = Keys.Right;
@@ -127,6 +124,8 @@ public class Engine {
         inputControll_2.checkInput(myHero_2, gameTime, gravitation_, collisionManager_);
         //GameWorld.update(); -> zrobić coś takiego rzeby było czytelniej tutaj
         gravitation_.Update(gameTime);
+        myHero_.SpriiteAnimator.Update(gameTime);
+        myHero_2.SpriiteAnimator.Update(gameTime);
     }
 
 

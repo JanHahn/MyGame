@@ -17,7 +17,7 @@ namespace MyGame;
 public class Gravitation{
 
     const float GROUND_LEVEL = 850f; // <- dodajemy tę stałą
-    const float ACCELERATION = 10000;
+    const float ACCELERATION = 6000;
 
     
 
