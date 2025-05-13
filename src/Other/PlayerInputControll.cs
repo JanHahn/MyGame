@@ -42,6 +42,7 @@ public class PlayerInputControll{
     private float movementSpeed_ = 10;
     private bool rightButtonHoldFlag;
     private bool leftButtonHoldFlag;
+    private bool idleHoldFlag = true;
 
 
 
@@ -61,19 +62,28 @@ public class PlayerInputControll{
         if (keyboard.IsKeyDown(moveLeft_) && !keyboard.IsKeyDown(moveRight_)){
             player.Position = new Vector2(player.Position.X - movementSpeed_, player.Position.Y);
             collisionManager.RightCorrection(player);
-            if (!player.IsFalling && leftButtonHoldFlag){
+            if (!player.IsFalling && !leftButtonHoldFlag){
+                Console.WriteLine("here");
                 //Włączamy sprite aktywny do chodzenia w lewo 
                 player.SpriiteAnimator.IsLeft = true;
                 player.SpriiteAnimator.ChangeState(HeroActions.Run);
+                leftButtonHoldFlag = true;
+                rightButtonHoldFlag = false;
+                idleHoldFlag = false;
             }
         }
+
         if (keyboard.IsKeyDown(moveRight_) && !keyboard.IsKeyDown(moveLeft_)){
             player.Position = new Vector2(player.Position.X + movementSpeed_, player.Position.Y);
             collisionManager.LeftCorrection(player);
             if (!player.IsFalling && !rightButtonHoldFlag){
+                Console.WriteLine("here");
                 //Włączamy sprite aktywny do chodzenia w prawo 
                 player.SpriiteAnimator.IsLeft = false;
                 player.SpriiteAnimator.ChangeState(HeroActions.Run);
+                leftButtonHoldFlag = false;
+                idleHoldFlag = false;
+                rightButtonHoldFlag = true;
             }
         }
 
@@ -84,7 +94,6 @@ public class PlayerInputControll{
             Console.WriteLine("skacze");
             //włączamy aktywny sprite do bycia w powietrzu
         }
-
         if (keyboard.IsKeyDown(shot_)){
             ;
         }
@@ -92,6 +101,15 @@ public class PlayerInputControll{
         // if (keyboard.IsKeyDown(interactiveButton_)){
         //     interactiveObject.execute();
         // }
+
+        if (player.IsFalling != true && !keyboard.IsKeyDown(moveRight_) && !keyboard.IsKeyDown(moveLeft_) && !idleHoldFlag){
+            player.SpriiteAnimator.ChangeState(HeroActions.Idle);
+            leftButtonHoldFlag = false;
+            rightButtonHoldFlag = false;
+            idleHoldFlag = true;
+        }
+
+        Console.WriteLine(idleHoldFlag);
         
     }
     

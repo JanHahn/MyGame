@@ -15,9 +15,11 @@ public abstract class SpriteAnimator {
         set { graphicsDevice_ = value; } 
     }
     protected Texture2D activeTexture_; //this is one frame of the sprite sheet
+    public Texture2D ActiveTexture { 
+        get { return activeTexture_; }
+    }
 
-    public SpriteAnimator(Texture2D activeTexture, GraphicsDevice graphicsDevice){
-        activeTexture_ = activeTexture;
+    public SpriteAnimator(GraphicsDevice graphicsDevice){
         graphicsDevice_ = graphicsDevice;
     }
     protected int frameWidth;

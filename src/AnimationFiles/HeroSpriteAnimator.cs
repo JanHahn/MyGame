@@ -30,7 +30,7 @@ public abstract class HeroSpriiteAnimator: SpriteAnimator {
 
     public bool IsLeft { get; set; }
 
-    public HeroSpriiteAnimator(Texture2D activeTexture, GraphicsDevice graphicsDevice):base(activeTexture,graphicsDevice){}
+    public HeroSpriiteAnimator(GraphicsDevice graphicsDevice):base(graphicsDevice){}
 
     public void ChangeState(HeroActions newAction){
         switch(newAction){
@@ -44,6 +44,7 @@ public abstract class HeroSpriiteAnimator: SpriteAnimator {
                 activeFunction_ = Run;
                 timer = 0;
                 currentFrame = 0;
+                totalFrames = 8;
                 break;
 
             case HeroActions.Jump:

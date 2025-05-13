@@ -10,7 +10,7 @@ namespace MyGame;
 public class SamuraiArcher: HeroSpriiteAnimator
 {
 
-    public SamuraiArcher(Texture2D activeTexture, GraphicsDevice graphicsDevice):base(activeTexture, graphicsDevice){
+    public SamuraiArcher(GraphicsDevice graphicsDevice):base(graphicsDevice){
         string contentRoot = AppContext.BaseDirectory;
         string IdlePath = Path.Combine(contentRoot, "Content/HerosSprites/SamuraiArcher/Idle.png");
         string RunPath = Path.Combine(contentRoot, "Content/HerosSprites/SamuraiArcher/Run.png");
@@ -23,22 +23,24 @@ public class SamuraiArcher: HeroSpriiteAnimator
         IdleSpriteSheet_ = Texture2D.FromFile(graphicsDevice_, IdlePath);
 
         activeFunction_ = Idle;
-        activeTexture = IdleSpriteSheet_;
+        activeTexture_ = IdleSpriteSheet_;
         totalFrames = 9;
         frameWidth = GetFrameWidth(totalFrames, IdleSpriteSheet_);
-        frameHeight = activeTexture.Height;
+        frameHeight = activeTexture_.Height;
         currentFrame = 0;
         timer = 0f;
-        interval = 1;
+        interval = 0.1;
     }
 
     public override void Idle(GameTime gameTime){
-        ;
+        activeTexture_ = ExtractSprite(IdleSpriteSheet_, new Rectangle(currentFrame * frameWidth, 0, frameWidth, frameHeight), graphicsDevice_);
     }
     public override void Jump(GameTime gameTime){
         ;
     }
     public override void Run(GameTime gameTime){
+        frameWidth = GetFrameWidth(totalFrames, runSpriteSheet_);
+        frameHeight = runSpriteSheet_.Height;
         double deltaTime = gameTime.ElapsedGameTime.TotalSeconds;
         timer += deltaTime;
         if (timer > interval){

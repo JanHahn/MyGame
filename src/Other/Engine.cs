@@ -48,14 +48,12 @@ public class Engine {
 
         //Hero 1
         inputControll_ = new PlayerInputControll();
-        Texture2D placeholderTexture = new Texture2D(graphicsDevice_, 1, 1); // mały pusty placeholder
-        myHero_ = new Hero(new SamuraiArcher(placeholderTexture, graphicsDevice_));
+        myHero_ = new Hero(new SamuraiArcher(graphicsDevice_));
         myHero_.Position = new Vector2(600, 0);
 
 
         //Hero 2
-        Texture2D placeholderTexture2 = new Texture2D(graphicsDevice_, 1, 1); // mały pusty placeholder
-        myHero_2 = new Hero(new SamuraiArcher(placeholderTexture2, graphicsDevice_));
+        myHero_2 = new Hero(new SamuraiArcher(graphicsDevice_));
         myHero_2.Position = new Vector2(300, 500);
         string contentRoot = AppContext.BaseDirectory;
         //string RunPath = Path.Combine(contentRoot, "Content/HerosSprites/kalamarnica.png");

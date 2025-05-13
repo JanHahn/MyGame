@@ -16,13 +16,6 @@ public class Hero: IFallingObject, IPrintable, ICollidable
         set { spriteAnimator_ = value; }
     }
 
-    private Texture2D activeTexture_;
-    public Texture2D ActiveTexture{
-        set { activeTexture_ = value; }
-        get { return activeTexture_; }
-    }
-
-
     public bool IsFalling { get; set; }
     private float fallingSpeed_;
     public float FallingSpeed { 
@@ -37,10 +30,10 @@ public class Hero: IFallingObject, IPrintable, ICollidable
     }
 
     public int Width { 
-        get { return activeTexture_.Width; }
+        get { return spriteAnimator_.ActiveTexture.Width; }
         }
     public int Height {
-        get { return activeTexture_.Height; }
+        get { return spriteAnimator_.ActiveTexture.Height; }
         }
 
     public Hero(HeroSpriiteAnimator spriteAnimator)
@@ -53,10 +46,10 @@ public class Hero: IFallingObject, IPrintable, ICollidable
     public void Draw(SpriteBatch spriteBatch)
     {
         if (spriteAnimator_.IsLeft){
-            spriteBatch.Draw(activeTexture_, position_, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.FlipHorizontally, 0f);
+            spriteBatch.Draw(spriteAnimator_.ActiveTexture, position_, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.FlipHorizontally, 0f);
         }
         else{
-            spriteBatch.Draw(activeTexture_, position_, Color.White);
+            spriteBatch.Draw(spriteAnimator_.ActiveTexture, position_, Color.White);
         }
     }
 }
