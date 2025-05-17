@@ -7,7 +7,8 @@ using System.IO;
 
 namespace MyGame;
 
-public class Engine {
+public class Engine
+{
 
     //rendering things
     private GraphicsDeviceManager graphics_;
@@ -35,7 +36,8 @@ public class Engine {
     CollisionManager collisionManager_;
 
 
-    public Engine(GraphicsDeviceManager graphics, SpriteBatch spriteBatch, GraphicsDevice graphicsDevice){
+    public Engine(GraphicsDeviceManager graphics, SpriteBatch spriteBatch, GraphicsDevice graphicsDevice)
+    {
 
         graphics_ = graphics;
         spriteBatch_ = spriteBatch;
@@ -46,19 +48,40 @@ public class Engine {
         printableAll_ = new List<IPrintable>();
 
 
+        //Heros Paths
+        string contentRoot = AppContext.BaseDirectory;
+        string IdlePath = Path.Combine(contentRoot, "Content/HerosSprites/SamuraiArcher/Idle.png");
+        string RunPath = Path.Combine(contentRoot, "Content/HerosSprites/SamuraiArcher/Run.png");
+        string JumpPath = Path.Combine(contentRoot, "Content/HerosSprites/SamuraiArcher/Jump.png");
+        string Attack_1Path = Path.Combine(contentRoot, "Content/HerosSprites/SamuraiArcher/Arrow.png");
+
+        HerosSprites herosSprites = new HerosSprites();
+        herosSprites.idleSprite.spriteSheet = Texture2D.FromFile(graphicsDevice_, IdlePath);
+        herosSprites.idleSprite.framesQuantity = 9;
+        herosSprites.idleSprite.timeInterval = 0.1f;
+        herosSprites.shotSprite.spriteSheet = Texture2D.FromFile(graphicsDevice_, Attack_1Path);
+        herosSprites.shotSprite.framesQuantity = 9;
+        herosSprites.shotSprite.timeInterval = 0.1f;
+        herosSprites.runSprite.spriteSheet = Texture2D.FromFile(graphicsDevice_, RunPath);
+        herosSprites.runSprite.framesQuantity = 8;
+        herosSprites.runSprite.timeInterval = 0.1f;
+        herosSprites.jumpSprite.spriteSheet = Texture2D.FromFile(graphicsDevice_, JumpPath);
+        herosSprites.jumpSprite.framesQuantity = 9;
+        herosSprites.jumpSprite.timeInterval = 0.1f;
+
+
         //Hero 1
         inputControll_ = new PlayerInputControll();
-        myHero_ = new Hero(new SamuraiArcher(graphicsDevice_));
+        HeroSpriiteAnimator heroSpriiteAnimator = new HeroSpriiteAnimator(graphicsDevice_, herosSprites);
+        myHero_ = new Hero(heroSpriiteAnimator);
         myHero_.Position = new Vector2(600, 0);
 
 
         //Hero 2
-        myHero_2 = new Hero(new SamuraiArcher(graphicsDevice_));
+        HeroSpriiteAnimator hero2SpriiteAnimator = new HeroSpriiteAnimator(graphicsDevice_, herosSprites);
+        myHero_2 = new Hero(hero2SpriiteAnimator);
         myHero_2.Position = new Vector2(300, 500);
-        string contentRoot = AppContext.BaseDirectory;
-        //string RunPath = Path.Combine(contentRoot, "Content/HerosSprites/kalamarnica.png");
-        //Texture2D IdleTexture = Texture2D.FromFile(graphicsDevice_, RunPath);
-        //myHero_2.ActiveTexture = IdleTexture;
+
 
         //Inputs Control for hero 2
         inputControll_2 = new PlayerInputControll();
@@ -116,7 +139,8 @@ public class Engine {
     }
 
 
-    public void Update(GameTime gameTime){
+    public void Update(GameTime gameTime)
+    {
         backGroundSlider_.Update(gameTime);
         inputControll_.checkInput(myHero_, gameTime, gravitation_, collisionManager_);
         inputControll_2.checkInput(myHero_2, gameTime, gravitation_, collisionManager_);
@@ -127,13 +151,15 @@ public class Engine {
     }
 
 
-    public void Draw(GameTime gameTime){
+    public void Draw(GameTime gameTime)
+    {
         backGroundSlider_.Draw(spriteBatch_);
-        foreach (IPrintable gameObject in printableAll_){
+        foreach (IPrintable gameObject in printableAll_)
+        {
             gameObject.Draw(spriteBatch_);
         }
         myHero_.Draw(spriteBatch_);
         myHero_2.Draw(spriteBatch_);
     }
-
+    
 }

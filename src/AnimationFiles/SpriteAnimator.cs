@@ -8,18 +8,24 @@ using Microsoft.Xna.Framework.Input;
 namespace MyGame;
 
 
-public abstract class SpriteAnimator {
+public abstract class SpriteAnimator
+{
 
     protected GraphicsDevice graphicsDevice_;
-    public GraphicsDevice GraphicsDevice_{
-        set { graphicsDevice_ = value; } 
+    public GraphicsDevice GraphicsDevice_
+    {
+        set { graphicsDevice_ = value; }
     }
     protected Texture2D activeTexture_; //this is one frame of the sprite sheet
-    public Texture2D ActiveTexture { 
+    public Texture2D ActiveTexture
+    {
         get { return activeTexture_; }
     }
 
-    public SpriteAnimator(GraphicsDevice graphicsDevice){
+    protected Texture2D activeSprite_ { get; set; }
+
+    public SpriteAnimator(GraphicsDevice graphicsDevice)
+    {
         graphicsDevice_ = graphicsDevice;
     }
     protected int frameWidth;
@@ -29,8 +35,25 @@ public abstract class SpriteAnimator {
     protected double interval;  // interval between each sprite frame
     protected int totalFrames;    // (in each action)
 
-    public int GetFrameWidth(int FramesQuantity, Texture2D SpriteSheet){
-        return SpriteSheet.Width/FramesQuantity;
+    public int GetFrameWidth(int FramesQuantity, Texture2D SpriteSheet)
+    {
+        return SpriteSheet.Width / FramesQuantity;
     }
 
+    protected void ResetParameters()
+    {
+        currentFrame = 0;
+        timer = 0;
+    } 
+    
+    protected Texture2D ExtractSprite(Texture2D source, Rectangle sourceRect, GraphicsDevice graphicsDevice)
+    {
+        Color[] data = new Color[sourceRect.Width * sourceRect.Height];
+        source.GetData(0, sourceRect, data, 0, data.Length);
+
+        Texture2D newTexture = new Texture2D(graphicsDevice, sourceRect.Width, sourceRect.Height);
+        newTexture.SetData(data);
+
+        return newTexture;
+    }
 }

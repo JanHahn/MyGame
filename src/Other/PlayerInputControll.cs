@@ -60,10 +60,7 @@ public class PlayerInputControll{
         var keyboard = Keyboard.GetState();
 
         if (keyboard.IsKeyDown(moveLeft_) && !keyboard.IsKeyDown(moveRight_)){
-            player.Position = new Vector2(player.Position.X - movementSpeed_, player.Position.Y);
-            collisionManager.RightCorrection(player);
             if (!player.IsFalling && !leftButtonHoldFlag){
-                Console.WriteLine("here");
                 //Włączamy sprite aktywny do chodzenia w lewo 
                 player.SpriiteAnimator.IsLeft = true;
                 player.SpriiteAnimator.ChangeState(HeroActions.Run);
@@ -71,13 +68,12 @@ public class PlayerInputControll{
                 rightButtonHoldFlag = false;
                 idleHoldFlag = false;
             }
+            player.Position = new Vector2(player.Position.X - movementSpeed_, player.Position.Y);
+            collisionManager.RightCorrection(player);
         }
 
         if (keyboard.IsKeyDown(moveRight_) && !keyboard.IsKeyDown(moveLeft_)){
-            player.Position = new Vector2(player.Position.X + movementSpeed_, player.Position.Y);
-            collisionManager.LeftCorrection(player);
             if (!player.IsFalling && !rightButtonHoldFlag){
-                Console.WriteLine("here");
                 //Włączamy sprite aktywny do chodzenia w prawo 
                 player.SpriiteAnimator.IsLeft = false;
                 player.SpriiteAnimator.ChangeState(HeroActions.Run);
@@ -85,13 +81,14 @@ public class PlayerInputControll{
                 idleHoldFlag = false;
                 rightButtonHoldFlag = true;
             }
+            player.Position = new Vector2(player.Position.X + movementSpeed_, player.Position.Y);
+            collisionManager.LeftCorrection(player);
         }
 
         if (keyboard.IsKeyDown(jump_) && player.IsFalling != true){
             player.FallingSpeed = -2000;
             player.IsFalling = true;
             gravitation.Add(player);
-            Console.WriteLine("skacze");
             //włączamy aktywny sprite do bycia w powietrzu
         }
         if (keyboard.IsKeyDown(shot_)){
@@ -108,8 +105,6 @@ public class PlayerInputControll{
             rightButtonHoldFlag = false;
             idleHoldFlag = true;
         }
-
-        Console.WriteLine(idleHoldFlag);
         
     }
     

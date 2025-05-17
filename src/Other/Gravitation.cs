@@ -54,7 +54,6 @@ public class Gravitation{
 
         List<IFallingObject> toRemove = new List<IFallingObject>();
 
-        Console.WriteLine(currentlyInAir_.Count);
         foreach (IFallingObject fallingObject in currentlyInAir_){
             
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -73,7 +72,6 @@ public class Gravitation{
             if (fallingObject.FallingSpeed > 0){
                 (bool, ICollidable) var = collisionManager_.TopCorrection(fallingObject);
                 if (var.Item1){
-                    Console.WriteLine(fallingObject.FallingSpeed);
                     toRemove.Add(fallingObject);
                     fallingObject.FallingSpeed = 0;
                     fallingObject.IsFalling = false;
@@ -84,7 +82,6 @@ public class Gravitation{
 
             else if (fallingObject.FallingSpeed < 0) {
                 if (collisionManager_.BottomCorrection(fallingObject)){
-                    Console.WriteLine(fallingObject.FallingSpeed);
                     fallingObject.FallingSpeed = 0;
                     continue;
                 }

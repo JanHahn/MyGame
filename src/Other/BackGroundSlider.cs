@@ -45,7 +45,7 @@ public class BackGroundSlider: IPrintable{
 
         rightWrapPoint = (int)Math.Round(screenWidth_ * 0.90);
         leftWrapPoint = (int)(Math.Round(screenWidth_ * 0.10) - hero_.Width);
-        Console.WriteLine(leftWrapPoint);
+        
     }
 
 
@@ -66,7 +66,9 @@ public class BackGroundSlider: IPrintable{
 
     
     public void Update(GameTime gameTime){
-        if (hero_.Position.X > rightWrapPoint){
+        //Console.WriteLine(leftWrapPoint);
+        if (hero_.Position.X > rightWrapPoint)
+        {
             //tutaj może być problem z zaokrągleniem
             int ds = (int)hero_.Position.X - rightWrapPoint;
 
@@ -82,11 +84,13 @@ public class BackGroundSlider: IPrintable{
             //     }
             //     obstacle.Position = new Vector2(obstacle.Position.X - ds, obstacle.Position.Y); 
             // }
-            foreach (var obstacle in TestList2){
-                if (obstacle == hero_){
+            foreach (var obstacle in TestList2)
+            {
+                if (obstacle == hero_)
+                {
                     continue;
                 }
-                obstacle.Position = new Vector2(obstacle.Position.X - ds, obstacle.Position.Y); 
+                obstacle.Position = new Vector2(obstacle.Position.X - ds, obstacle.Position.Y);
             }
         }
 
