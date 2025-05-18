@@ -30,10 +30,10 @@ public class Hero: IFallingObject, IPrintable, ICollidable
     }
 
     public int Width { 
-        get { return spriteAnimator_.ActiveTexture.Width; }
+        get { return 73; }
         }
     public int Height {
-        get { return spriteAnimator_.ActiveTexture.Height; }
+        get { return 73; }
         }
 
     public Hero(HeroSpriiteAnimator spriteAnimator)
@@ -45,11 +45,17 @@ public class Hero: IFallingObject, IPrintable, ICollidable
 
     public void Draw(SpriteBatch spriteBatch)
     {
-        if (spriteAnimator_.IsLeft){
-            spriteBatch.Draw(spriteAnimator_.ActiveTexture, position_, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.FlipHorizontally, 0f);
+        
+
+        Rectangle src = new Rectangle(0, spriteAnimator_.ActiveTexture.Height - 73 - spriteAnimator_.Y_OffSet, spriteAnimator_.ActiveTexture.Width, 73 + spriteAnimator_.Y_OffSet);
+        Vector2 position2 = new Vector2(this.position_.X, this.position_.Y - spriteAnimator_.Y_OffSet);
+        if (spriteAnimator_.IsLeft)
+        {
+            spriteBatch.Draw(spriteAnimator_.ActiveTexture, position2, src, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.FlipHorizontally, 0f);
         }
-        else{
-            spriteBatch.Draw(spriteAnimator_.ActiveTexture, position_, Color.White);
+        else
+        {
+            spriteBatch.Draw(spriteAnimator_.ActiveTexture, position2, src, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
     }
 }

@@ -39,7 +39,7 @@ public class PlayerInputControll{
     }
 
 
-    private float movementSpeed_ = 10;
+    private float movementSpeed_ = 8;
     private bool rightButtonHoldFlag;
     private bool leftButtonHoldFlag;
     private bool idleHoldFlag = true;

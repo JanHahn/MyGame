@@ -35,6 +35,9 @@ public abstract class SpriteAnimator
     protected double interval;  // interval between each sprite frame
     protected int totalFrames;    // (in each action)
 
+
+    public int Y_OffSet { get; set; }
+
     public int GetFrameWidth(int FramesQuantity, Texture2D SpriteSheet)
     {
         return SpriteSheet.Width / FramesQuantity;

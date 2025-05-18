@@ -54,6 +54,7 @@ public class HeroSpriiteAnimator : SpriteAnimator
 
     public HeroSpriiteAnimator(GraphicsDevice graphicsDevice, HerosSprites heroSprites) : base(graphicsDevice)
     {
+        Y_OffSet = 0;
         herosSprites_ = heroSprites;
 
         ResetParameters();
@@ -67,6 +68,7 @@ public class HeroSpriiteAnimator : SpriteAnimator
         {
             case HeroActions.Idle:
                 ResetParameters();
+                Y_OffSet = 20;
                 activeFunction_ = NormalAnimation;
                 SetAnimation(herosSprites_.idleSprite);
                 Console.WriteLine(activeTexture_.Height);
@@ -74,6 +76,7 @@ public class HeroSpriiteAnimator : SpriteAnimator
 
             case HeroActions.Run:
                 ResetParameters();
+                Y_OffSet = 0;
                 activeFunction_ = NormalAnimation;
                 SetAnimation(herosSprites_.runSprite);
                 Console.WriteLine(activeTexture_.Height);
@@ -82,13 +85,13 @@ public class HeroSpriiteAnimator : SpriteAnimator
             case HeroActions.Jump:
                 ResetParameters();
                 activeFunction_ = NormalAnimation;
-                SetAnimation(herosSprites_.jumpSprite); 
+                SetAnimation(herosSprites_.jumpSprite);
                 break;
 
             case HeroActions.Shot:
                 ResetParameters();
                 activeFunction_ = NormalAnimation;
-                SetAnimation(herosSprites_.shotSprite); 
+                SetAnimation(herosSprites_.shotSprite);
                 break;
 
             default:
