@@ -56,15 +56,27 @@ public class Engine
         string Attack_1Path = Path.Combine(contentRoot, "Content/HerosSprites/SamuraiArcher/Arrow.png");
 
         HerosSprites herosSprites = new HerosSprites();
+        herosSprites.hitBoxHeight = 73;
+        herosSprites.hitBoxWidth = 40;
+
         herosSprites.idleSprite.spriteSheet = Texture2D.FromFile(graphicsDevice_, IdlePath);
         herosSprites.idleSprite.framesQuantity = 9;
         herosSprites.idleSprite.timeInterval = 0.1f;
+        herosSprites.idleSprite.X_OffSet = 9;
+        herosSprites.idleSprite.Y_OffSet = 30;
+
         herosSprites.shotSprite.spriteSheet = Texture2D.FromFile(graphicsDevice_, Attack_1Path);
         herosSprites.shotSprite.framesQuantity = 9;
         herosSprites.shotSprite.timeInterval = 0.1f;
+        herosSprites.shotSprite.X_OffSet = 26;
+        herosSprites.shotSprite.Y_OffSet = 0;
+
         herosSprites.runSprite.spriteSheet = Texture2D.FromFile(graphicsDevice_, RunPath);
         herosSprites.runSprite.framesQuantity = 8;
         herosSprites.runSprite.timeInterval = 0.1f;
+        herosSprites.runSprite.X_OffSet = 26;
+        herosSprites.runSprite.Y_OffSet = 0;
+
         herosSprites.jumpSprite.spriteSheet = Texture2D.FromFile(graphicsDevice_, JumpPath);
         herosSprites.jumpSprite.framesQuantity = 9;
         herosSprites.jumpSprite.timeInterval = 0.1f;

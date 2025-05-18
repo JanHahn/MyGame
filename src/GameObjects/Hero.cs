@@ -29,33 +29,34 @@ public class Hero: IFallingObject, IPrintable, ICollidable
         set { position_ = value; }
     }
 
-    public int Width { 
-        get { return 73; }
-        }
-    public int Height {
-        get { return 73; }
-        }
+    public int Width { get; set; }
+    public int Height { get; set; }
 
     public Hero(HeroSpriiteAnimator spriteAnimator)
     {
         spriteAnimator_ = spriteAnimator;
         fallingSpeed_ = 0;
         position_ = new Vector2(300, 1000);
+
+        Width = spriteAnimator.HeroSprites.hitBoxWidth;
+        Height = spriteAnimator.HeroSprites.hitBoxHeight;
     }
 
     public void Draw(SpriteBatch spriteBatch)
     {
         
-
-        Rectangle src = new Rectangle(0, spriteAnimator_.ActiveTexture.Height - 73 - spriteAnimator_.Y_OffSet, spriteAnimator_.ActiveTexture.Width, 73 + spriteAnimator_.Y_OffSet);
-        Vector2 position2 = new Vector2(this.position_.X, this.position_.Y - spriteAnimator_.Y_OffSet);
+        //a lot of calculating! Maybe slow!
+        //Rectangle src = new Rectangle(0, spriteAnimator_.ActiveTexture.Height - this.Height - spriteAnimator_.Active_Y_OffSet, spriteAnimator_.ActiveTexture.Width, this.Height + spriteAnimator_.Active_Y_OffSet);
         if (spriteAnimator_.IsLeft)
         {
-            spriteBatch.Draw(spriteAnimator_.ActiveTexture, position2, src, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.FlipHorizontally, 0f);
+            Vector2 texturePosition = new Vector2(this.position_.X - (spriteAnimator_.ActiveTexture.Width - this.Width - spriteAnimator_.Active_X_OffSet) , this.position_.Y - spriteAnimator_.Active_Y_OffSet);
+            spriteBatch.Draw(spriteAnimator_.ActiveTexture, texturePosition, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.FlipHorizontally, 0f);
         }
         else
         {
-            spriteBatch.Draw(spriteAnimator_.ActiveTexture, position2, src, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            
+            Vector2 texturePosition = new Vector2(this.position_.X - spriteAnimator_.Active_X_OffSet, this.position_.Y - spriteAnimator_.Active_Y_OffSet);
+            spriteBatch.Draw(spriteAnimator_.ActiveTexture, texturePosition, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
     }
 }

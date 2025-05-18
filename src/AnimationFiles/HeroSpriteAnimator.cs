@@ -22,16 +22,20 @@ public struct HeroSprite
     public Texture2D spriteSheet;
     public int framesQuantity;
     public float timeInterval;
+    public int X_OffSet;
+    public int Y_OffSet;
     
 }
 
 public struct HerosSprites
 {
+    public int hitBoxWidth;
+    public int hitBoxHeight;
     public HeroSprite jumpSprite;
     public HeroSprite runSprite;
     public HeroSprite shotSprite;
     public HeroSprite idleSprite;
-
+    
 }
 
 // to ta klasa powinna być odpowiedzialna za wyświetlanie ona powinna mieć draw
@@ -46,6 +50,7 @@ public class HeroSpriiteAnimator : SpriteAnimator
     public HerosSprites HeroSprites
     {
         set { herosSprites_ = value; }
+        get { return herosSprites_;  }
     }
 
 
@@ -54,7 +59,6 @@ public class HeroSpriiteAnimator : SpriteAnimator
 
     public HeroSpriiteAnimator(GraphicsDevice graphicsDevice, HerosSprites heroSprites) : base(graphicsDevice)
     {
-        Y_OffSet = 0;
         herosSprites_ = heroSprites;
 
         ResetParameters();
@@ -68,7 +72,6 @@ public class HeroSpriiteAnimator : SpriteAnimator
         {
             case HeroActions.Idle:
                 ResetParameters();
-                Y_OffSet = 20;
                 activeFunction_ = NormalAnimation;
                 SetAnimation(herosSprites_.idleSprite);
                 Console.WriteLine(activeTexture_.Height);
@@ -76,7 +79,6 @@ public class HeroSpriiteAnimator : SpriteAnimator
 
             case HeroActions.Run:
                 ResetParameters();
-                Y_OffSet = 0;
                 activeFunction_ = NormalAnimation;
                 SetAnimation(herosSprites_.runSprite);
                 Console.WriteLine(activeTexture_.Height);
@@ -110,6 +112,8 @@ public class HeroSpriiteAnimator : SpriteAnimator
         activeSprite_ = herosSprite.spriteSheet;
         totalFrames = herosSprite.framesQuantity;
         interval = herosSprite.timeInterval;
+        Active_Y_OffSet = herosSprite.Y_OffSet;
+        Active_X_OffSet = herosSprite.X_OffSet;
 
         frameHeight = activeSprite_.Height;
         frameWidth = GetFrameWidth(totalFrames, activeSprite_);

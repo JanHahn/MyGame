@@ -36,7 +36,8 @@ public abstract class SpriteAnimator
     protected int totalFrames;    // (in each action)
 
 
-    public int Y_OffSet { get; set; }
+    public int Active_Y_OffSet { get; set; }
+    public int Active_X_OffSet { get; set; }
 
     public int GetFrameWidth(int FramesQuantity, Texture2D SpriteSheet)
     {
