@@ -17,7 +17,7 @@ namespace MyGame;
 public class Gravitation{
 
     const float GROUND_LEVEL = 850f; // <- dodajemy tę stałą
-    const float ACCELERATION = 8000;
+    const float ACCELERATION = 6000;
 
     
 
@@ -89,6 +89,7 @@ public class Gravitation{
             
             if (fallingObject.Position.Y > GROUND_LEVEL){
                 fallingObject.Position = new Vector2(fallingObject.Position.X, GROUND_LEVEL);
+                fallingObject.FallingSpeed = 0;
                 toRemove.Add(fallingObject);
             }
         }
@@ -98,7 +99,7 @@ public class Gravitation{
         }
     }
 
-    public void CheckIfStandingOnEachOther(){
+    private void CheckIfStandingOnEachOther(){
 
         List<(IFallingObject, ICollidable)> toRemove = new List<(IFallingObject, ICollidable)>();
 

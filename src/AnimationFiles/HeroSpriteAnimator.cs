@@ -44,26 +44,29 @@ public struct HerosSprites
 public class HeroSpriiteAnimator : SpriteAnimator
 {
 
-    protected Action<GameTime> activeFunction_;
+    private Action<GameTime> activeFunction_;
 
     private HerosSprites herosSprites_;
     public HerosSprites HeroSprites
     {
         set { herosSprites_ = value; }
-        get { return herosSprites_;  }
+        get { return herosSprites_; }
     }
 
 
+    public Hero ConnectedHero { get; set; }
     public bool IsLeft { get; set; }
 
 
     public HeroSpriiteAnimator(GraphicsDevice graphicsDevice, HerosSprites heroSprites) : base(graphicsDevice)
     {
+        ConnectedHero = new Hero();
         herosSprites_ = heroSprites;
 
         ResetParameters();
         activeFunction_ = NormalAnimation;
         SetAnimation(herosSprites_.idleSprite);
+
     }
 
     public void ChangeState(HeroActions newAction)
@@ -74,19 +77,17 @@ public class HeroSpriiteAnimator : SpriteAnimator
                 ResetParameters();
                 activeFunction_ = NormalAnimation;
                 SetAnimation(herosSprites_.idleSprite);
-                Console.WriteLine(activeTexture_.Height);
                 break;
 
             case HeroActions.Run:
                 ResetParameters();
                 activeFunction_ = NormalAnimation;
                 SetAnimation(herosSprites_.runSprite);
-                Console.WriteLine(activeTexture_.Height);
                 break;
 
             case HeroActions.Jump:
                 ResetParameters();
-                activeFunction_ = NormalAnimation;
+                activeFunction_ = JumpAnimation;
                 SetAnimation(herosSprites_.jumpSprite);
                 break;
 
@@ -121,16 +122,32 @@ public class HeroSpriiteAnimator : SpriteAnimator
         activeTexture_ = ExtractSprite(activeSprite_, new Rectangle(currentFrame % totalFrames * frameWidth, 0, frameWidth, frameHeight), graphicsDevice_);
     }
 
-    private void NormalAnimation(GameTime gameTime)
+    private void JumpAnimation(GameTime gameTime)
     {
-
-        double deltaTime = gameTime.ElapsedGameTime.TotalSeconds;
-        timer += deltaTime;
-        if (timer > interval)
+        Console.WriteLine(ConnectedHero.FallingSpeed);
+        if (ConnectedHero.FallingSpeed < -600)
         {
-            timer = timer - interval;
-            currentFrame++;
-            activeTexture_ = ExtractSprite(activeSprite_, new Rectangle(currentFrame % totalFrames * frameWidth, 0, frameWidth, frameHeight), graphicsDevice_);
+            activeTexture_ = ExtractSprite(activeSprite_, new Rectangle(2 % totalFrames * frameWidth, 0, frameWidth, frameHeight), graphicsDevice_);
+        }
+        else if (ConnectedHero.FallingSpeed < 600)
+        {
+            activeTexture_ = ExtractSprite(activeSprite_, new Rectangle(3 % totalFrames * frameWidth, 0, frameWidth, frameHeight), graphicsDevice_);
+        }
+        else if (ConnectedHero.FallingSpeed < 1200)
+        {
+            activeTexture_ = ExtractSprite(activeSprite_, new Rectangle(4 % totalFrames * frameWidth, 0, frameWidth, frameHeight), graphicsDevice_);
+        }
+        else if (ConnectedHero.FallingSpeed < 1400)
+        {
+            activeTexture_ = ExtractSprite(activeSprite_, new Rectangle(6 % totalFrames * frameWidth, 0, frameWidth, frameHeight), graphicsDevice_);
+        }
+        else if (ConnectedHero.FallingSpeed < 1800)
+        {
+            activeTexture_ = ExtractSprite(activeSprite_, new Rectangle(7 % totalFrames * frameWidth, 0, frameWidth, frameHeight), graphicsDevice_);
+        }
+        else
+        {
+            activeTexture_ = ExtractSprite(activeSprite_, new Rectangle(8 % totalFrames * frameWidth, 0, frameWidth, frameHeight), graphicsDevice_);
         }
     }
 

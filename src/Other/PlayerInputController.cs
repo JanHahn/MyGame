@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace MyGame;
 
-public class PlayerInputControll{
+public class PlayerInputController{
 
     IPlayerInteractable interactiveObject;
 
@@ -39,14 +39,14 @@ public class PlayerInputControll{
     }
 
 
-    private float movementSpeed_ = 8;
+    private float movementSpeed_ = 12;
     private bool rightButtonHoldFlag;
     private bool leftButtonHoldFlag;
     private bool idleHoldFlag = true;
 
 
 
-    public PlayerInputControll(){
+    public PlayerInputController(){
         moveRight_ = Keys.D;
         moveLeft_ = Keys.A;
         jump_ = Keys.W;
@@ -55,19 +55,25 @@ public class PlayerInputControll{
     }
 
 
-    public void checkInput(Hero player, GameTime gameTime, Gravitation gravitation, CollisionManager collisionManager){
+    public void checkInput(Hero player, Gravitation gravitation, CollisionManager collisionManager){
 
         var keyboard = Keyboard.GetState();
 
-        if (keyboard.IsKeyDown(moveLeft_) && !keyboard.IsKeyDown(moveRight_)){
-            if (!player.IsFalling && !leftButtonHoldFlag){
+        if (player.FallingSpeed != 0) {
+            player.SpriiteAnimator.ChangeState(HeroActions.Jump);
+        }
+
+        if (keyboard.IsKeyDown(moveLeft_) && !keyboard.IsKeyDown(moveRight_))
+        {
+            if (!player.IsFalling && !leftButtonHoldFlag)
+            {
                 //Włączamy sprite aktywny do chodzenia w lewo 
-                player.SpriiteAnimator.IsLeft = true;
                 player.SpriiteAnimator.ChangeState(HeroActions.Run);
                 leftButtonHoldFlag = true;
                 rightButtonHoldFlag = false;
                 idleHoldFlag = false;
             }
+            player.SpriiteAnimator.IsLeft = true;
             player.Position = new Vector2(player.Position.X - movementSpeed_, player.Position.Y);
             collisionManager.RightCorrection(player);
         }
@@ -75,17 +81,18 @@ public class PlayerInputControll{
         if (keyboard.IsKeyDown(moveRight_) && !keyboard.IsKeyDown(moveLeft_)){
             if (!player.IsFalling && !rightButtonHoldFlag){
                 //Włączamy sprite aktywny do chodzenia w prawo 
-                player.SpriiteAnimator.IsLeft = false;
                 player.SpriiteAnimator.ChangeState(HeroActions.Run);
                 leftButtonHoldFlag = false;
                 idleHoldFlag = false;
                 rightButtonHoldFlag = true;
             }
+            player.SpriiteAnimator.IsLeft = false;
             player.Position = new Vector2(player.Position.X + movementSpeed_, player.Position.Y);
             collisionManager.LeftCorrection(player);
         }
 
         if (keyboard.IsKeyDown(jump_) && player.IsFalling != true){
+            player.SpriiteAnimator.ChangeState(HeroActions.Jump);
             player.FallingSpeed = -2000;
             player.IsFalling = true;
             gravitation.Add(player);
@@ -95,9 +102,9 @@ public class PlayerInputControll{
             ;
         }
 
-        // if (keyboard.IsKeyDown(interactiveButton_)){
-        //     interactiveObject.execute();
-        // }
+        if (keyboard.IsKeyDown(interactiveButton_)){
+            interactiveObject.execute();
+        }
 
         if (player.IsFalling != true && !keyboard.IsKeyDown(moveRight_) && !keyboard.IsKeyDown(moveLeft_) && !idleHoldFlag){
             player.SpriiteAnimator.ChangeState(HeroActions.Idle);

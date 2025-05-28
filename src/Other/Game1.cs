@@ -18,7 +18,7 @@ public class Game1 : Game
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
-        _graphics.IsFullScreen = false;
+        _graphics.IsFullScreen = true;
         _graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
         _graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
         _graphics.ApplyChanges();

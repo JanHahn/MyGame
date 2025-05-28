@@ -16,14 +16,15 @@ public class Engine
     private GraphicsDevice graphicsDevice_;
 
 
-    private PlayerInputControll inputControll_;
-    private PlayerInputControll inputControll_2;
+    private PlayerInputController inputControll_;
+    private PlayerInputController inputControll_2;
 
 
     //printable Things
     private Hero myHero_;
     private Hero myHero_2;
     private BackGroundSlider backGroundSlider_;
+    private Hud hud_;
 
 
     //Stores things to be diplayed at the moment (they are in screen range)
@@ -46,7 +47,6 @@ public class Engine
 
         //List things to be printed
         printableAll_ = new List<IPrintable>();
-
 
         //Heros Paths
         string contentRoot = AppContext.BaseDirectory;
@@ -80,10 +80,12 @@ public class Engine
         herosSprites.jumpSprite.spriteSheet = Texture2D.FromFile(graphicsDevice_, JumpPath);
         herosSprites.jumpSprite.framesQuantity = 9;
         herosSprites.jumpSprite.timeInterval = 0.1f;
+        herosSprites.jumpSprite.X_OffSet = 27;
+        herosSprites.jumpSprite.Y_OffSet = 0;
 
 
         //Hero 1
-        inputControll_ = new PlayerInputControll();
+        inputControll_ = new PlayerInputController();
         HeroSpriiteAnimator heroSpriiteAnimator = new HeroSpriiteAnimator(graphicsDevice_, herosSprites);
         myHero_ = new Hero(heroSpriiteAnimator);
         myHero_.Position = new Vector2(600, 0);
@@ -96,7 +98,7 @@ public class Engine
 
 
         //Inputs Control for hero 2
-        inputControll_2 = new PlayerInputControll();
+        inputControll_2 = new PlayerInputController();
         inputControll_2.MoveLeft = Keys.Left;
         inputControll_2.MoveRight = Keys.Right;
         inputControll_2.Jump = Keys.Up;
@@ -122,11 +124,7 @@ public class Engine
         backGroundLayers.Add(backgroundTexture2);
         backGroundLayers.Add(backgroundTexture3);
         backGroundLayers.Add(backgroundTexture4);
-        List<float> speedFactors = new List<float>();
-        speedFactors.Add(1);
-        speedFactors.Add(0.05f);
-        speedFactors.Add(0.12f);
-        speedFactors.Add(0.5f);
+        List<float> speedFactors = [1, 0.05f, 0.12f, 0.35f];
         Vector2 backgroundScale = new Vector2(
         (float)graphics_.PreferredBackBufferWidth / backgroundTexture.Width,
         (float)graphics_.PreferredBackBufferHeight / backgroundTexture.Height);
@@ -146,6 +144,8 @@ public class Engine
         //Castle
         Castle myCastle = new Castle(collisionManager_, printableAll_, graphicsDevice_);
 
+        hud_ = new Hud(100, graphicsDevice);
+
 
         //printableInRange_.Add(myCastle);
     }
@@ -154,12 +154,13 @@ public class Engine
     public void Update(GameTime gameTime)
     {
         backGroundSlider_.Update(gameTime);
-        inputControll_.checkInput(myHero_, gameTime, gravitation_, collisionManager_);
-        inputControll_2.checkInput(myHero_2, gameTime, gravitation_, collisionManager_);
+        inputControll_.checkInput(myHero_, gravitation_, collisionManager_);
+        inputControll_2.checkInput(myHero_2, gravitation_, collisionManager_);
         //GameWorld.update(); -> zrobić coś takiego rzeby było czytelniej tutaj
         gravitation_.Update(gameTime);
         myHero_.SpriiteAnimator.Update(gameTime);
         myHero_2.SpriiteAnimator.Update(gameTime);
+        hud_.TestUpdate(gameTime);
     }
 
 
@@ -172,6 +173,7 @@ public class Engine
         }
         myHero_.Draw(spriteBatch_);
         myHero_2.Draw(spriteBatch_);
+        hud_.Draw(spriteBatch_);
     }
     
 }

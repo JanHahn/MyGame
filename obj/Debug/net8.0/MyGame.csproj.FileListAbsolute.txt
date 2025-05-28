@@ -51,3 +51,9 @@ c:\Users\janek\my_shit\firstGame\MyGame\obj\Debug\net8.0\MyGame.pdb
 C:\Users\janek\my_shit\firstGame\MyGame\obj\Debug\net8.0\MyGame.genruntimeconfig.cache
 C:\Users\janek\my_shit\firstGame\MyGame\obj\Debug\net8.0\ref\MyGame.dll
 c:\Users\janek\my_shit\firstGame\MyGame\bin\Debug\net8.0\Newtonsoft.Json.dll
+c:\Users\janek\my_shit\firstGame\MyGame\bin\Debug\net8.0\Cyotek.Drawing.BitmapFont.dll
+c:\Users\janek\my_shit\firstGame\MyGame\bin\Debug\net8.0\FontStashSharp.Base.dll
+c:\Users\janek\my_shit\firstGame\MyGame\bin\Debug\net8.0\FontStashSharp.MonoGame.dll
+c:\Users\janek\my_shit\firstGame\MyGame\bin\Debug\net8.0\FontStashSharp.Rasterizers.StbTrueTypeSharp.dll
+c:\Users\janek\my_shit\firstGame\MyGame\bin\Debug\net8.0\StbImageSharp.dll
+c:\Users\janek\my_shit\firstGame\MyGame\bin\Debug\net8.0\StbTrueTypeSharp.dll

@@ -49,6 +49,19 @@ public abstract class SpriteAnimator
         currentFrame = 0;
         timer = 0;
     } 
+
+    protected void NormalAnimation(GameTime gameTime)
+    {
+
+        double deltaTime = gameTime.ElapsedGameTime.TotalSeconds;
+        timer += deltaTime;
+        if (timer > interval)
+        {
+            timer = timer - interval;
+            currentFrame++;
+            activeTexture_ = ExtractSprite(activeSprite_, new Rectangle(currentFrame % totalFrames * frameWidth, 0, frameWidth, frameHeight), graphicsDevice_);
+        }
+    }
     
     protected Texture2D ExtractSprite(Texture2D source, Rectangle sourceRect, GraphicsDevice graphicsDevice)
     {

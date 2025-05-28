@@ -43,8 +43,8 @@ public class BackGroundSlider: IPrintable{
         screenWidth_ = screenWidth;
         scale_ = scale;
 
-        rightWrapPoint = (int)Math.Round(screenWidth_ * 0.90);
-        leftWrapPoint = (int)(Math.Round(screenWidth_ * 0.10) - hero_.Width);
+        rightWrapPoint = (int)Math.Round(screenWidth_ * 0.60);
+        leftWrapPoint = (int)(Math.Round(screenWidth_ * 0.05) - hero_.Width);
         
     }
 
@@ -97,26 +97,22 @@ public class BackGroundSlider: IPrintable{
 
         //nie działa :(
         if (hero_.Position.X < leftWrapPoint){
-            //tutaj może być problem z zaokrągleniem
+            //tutaj może być problem z zaokrągleniem (chyba nie ma jednak?)
             int ds = leftWrapPoint - (int)hero_.Position.X;
 
             Vector2 pos = hero_.Position;
             pos.X = leftWrapPoint;
             hero_.Position = pos;
 
-            shift -= ds;
-
-            // foreach (var obstacle in testList){
-            //     if (obstacle == hero_){
-            //         continue;
-            //     }
-            //     obstacle.Position = new Vector2(obstacle.Position.X + ds, obstacle.Position.Y); 
-            // }
-            foreach (var obstacle in TestList2){
-                if (obstacle == hero_){
-                    continue;
-                }
-                obstacle.Position = new Vector2(obstacle.Position.X + ds, obstacle.Position.Y); 
+            if (shift - ds > 0) {
+                shift -= ds;
+                foreach (var obstacle in TestList2){
+                    if (obstacle == hero_){
+                        continue;
+                    }
+                obstacle.Position = new Vector2(obstacle.Position.X + ds, obstacle.Position.Y);     
+            }
+            
             }
 
         }
