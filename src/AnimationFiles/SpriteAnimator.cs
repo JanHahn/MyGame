@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 namespace MyGame;
 
 
-public abstract class SpriteAnimator
+public class SpriteAnimator
 {
 
     protected GraphicsDevice graphicsDevice_;
@@ -28,6 +28,7 @@ public abstract class SpriteAnimator
     {
         graphicsDevice_ = graphicsDevice;
     }
+    
     protected int frameWidth;
     protected int frameHeight;
     protected int currentFrame;

@@ -124,7 +124,7 @@ public class HeroSpriiteAnimator : SpriteAnimator
 
     private void JumpAnimation(GameTime gameTime)
     {
-        Console.WriteLine(ConnectedHero.FallingSpeed);
+        //Console.WriteLine(ConnectedHero.FallingSpeed);
         if (ConnectedHero.FallingSpeed < -600)
         {
             activeTexture_ = ExtractSprite(activeSprite_, new Rectangle(2 % totalFrames * frameWidth, 0, frameWidth, frameHeight), graphicsDevice_);

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/BackGrounds/animated/1.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/BackGrounds/animated/2.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/BackGrounds/animated/3.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/BackGrounds/animated/4.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/BackGrounds/background2.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/BackGrounds/background4.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/BackGrounds/DayBasic.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/BackGrounds/NIghtMountain.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/BackGrounds/Village_background.jpg</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/GameWorld/CastleTiles.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/GameWorld/GoldCoin_1.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/batman.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/kalamarnica.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/kutasy.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/Samurai/Attack_1.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/Samurai/Attack_2.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/Samurai/Attack_3.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/Samurai/Dead.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/Samurai/Hurt.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/Samurai/Idle.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/Samurai/Jump.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/Samurai/Protection.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/Samurai/Run.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/Samurai/Walk.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/SamuraiArcher/Arrow.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/SamuraiArcher/Attack_1.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/SamuraiArcher/Attack_2.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/SamuraiArcher/Attack_3.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/SamuraiArcher/Dead.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/SamuraiArcher/Hurt.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/SamuraiArcher/Idle.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/SamuraiArcher/Jump.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/SamuraiArcher/Run.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/SamuraiArcher/Shot.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/SamuraiArcher/Walk.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/SamuraiCommander/Attack_1.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/SamuraiCommander/Attack_2.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/SamuraiCommander/Attack_3.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/SamuraiCommander/Dead.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/SamuraiCommander/Hurt.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/SamuraiCommander/Idle.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/SamuraiCommander/Jump.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/SamuraiCommander/Protect.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/SamuraiCommander/Run.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/SamuraiCommander/Walk.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/tung_tung.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HUD/HealthBar.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HUD/InventoryBar.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>

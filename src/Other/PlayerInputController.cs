@@ -39,7 +39,7 @@ public class PlayerInputController{
     }
 
 
-    private float movementSpeed_ = 12;
+    
     private bool rightButtonHoldFlag;
     private bool leftButtonHoldFlag;
     private bool idleHoldFlag = true;
@@ -74,7 +74,8 @@ public class PlayerInputController{
                 idleHoldFlag = false;
             }
             player.SpriiteAnimator.IsLeft = true;
-            player.Position = new Vector2(player.Position.X - movementSpeed_, player.Position.Y);
+            player.Position = new Vector2(player.Position.X - player.MovementSpeed, player.Position.Y);
+            player.WorldCoordinates = new Vector2(player.WorldCoordinates.X - player.MovementSpeed, player.Position.Y);
             collisionManager.RightCorrection(player);
         }
 
@@ -87,15 +88,18 @@ public class PlayerInputController{
                 rightButtonHoldFlag = true;
             }
             player.SpriiteAnimator.IsLeft = false;
-            player.Position = new Vector2(player.Position.X + movementSpeed_, player.Position.Y);
+            player.Position = new Vector2(player.Position.X + player.MovementSpeed, player.Position.Y);
+            player.WorldCoordinates = new Vector2(player.WorldCoordinates.X + player.MovementSpeed, player.Position.Y);
             collisionManager.LeftCorrection(player);
         }
 
-        if (keyboard.IsKeyDown(jump_) && player.IsFalling != true){
+        if (keyboard.IsKeyDown(jump_) && player.IsFalling != true)
+        {
             player.SpriiteAnimator.ChangeState(HeroActions.Jump);
             player.FallingSpeed = -2000;
             player.IsFalling = true;
             gravitation.Add(player);
+            idleHoldFlag = false;
             //włączamy aktywny sprite do bycia w powietrzu
         }
         if (keyboard.IsKeyDown(shot_)){

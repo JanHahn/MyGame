@@ -10,7 +10,7 @@ using System.IO;
 namespace MyGame;
 
 // Represents object that can be managed by CollisionManager.cs class
-    public interface ICollidable
+    public interface ICollidable 
     {
         public Vector2 Position { get; set; }
         public int Width { get; }

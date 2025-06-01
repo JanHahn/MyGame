@@ -14,7 +14,7 @@ namespace MyGame;
 public class CollisionManager {
     
 
-    //Stores all objects that can collide with each other
+    //Stores all tiles that can collide with moving objects
     private List<ICollidable> collidableObjects_;
 
     public List<ICollidable> CollidableObjects{
