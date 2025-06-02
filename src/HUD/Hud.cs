@@ -22,15 +22,17 @@ public class Hud
         get { return healthBar_; }
     } 
 
+    public CoinStatus CoinStatus { get; set; }
 
     private Inventory inventory_;
 
 
-    public Hud(GraphicsDevice gd)
+    public Hud(GraphicsDevice gd, GameServices gameServices)
     {
         this.gd_ = gd;
         this.inventory_ = new Inventory();
         this.healthBar_ = new HealthBar(100, gd);
+        this.CoinStatus = new CoinStatus(gd, gameServices);
     }
 
 
@@ -38,6 +40,7 @@ public class Hud
     {
         healthBar_.Draw(spriteBatch);
         inventory_.Draw(spriteBatch);
+        CoinStatus.Draw(spriteBatch);
     }
 
 

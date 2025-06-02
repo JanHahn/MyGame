@@ -23,6 +23,7 @@ public static class TextureManager
 
         textures_["HealthBar"] = content.Load<Texture2D>("HUD/HealthBar");
         textures_["InventoryBar"] = content.Load<Texture2D>("HUD/InventoryBar");
+        textures_["CoinIcon"] = content.Load<Texture2D>("HUD/CoinIcon");
 
         textures_["CastleTiles"] = content.Load<Texture2D>("GameWorld/CastleTiles");
         textures_["GoldCoin1"] = content.Load<Texture2D>("GameWorld/GoldCoin_1");
@@ -31,6 +32,8 @@ public static class TextureManager
         textures_["BackGroundAnimated2"] = content.Load<Texture2D>("BackGrounds/animated/2");
         textures_["BackGroundAnimated3"] = content.Load<Texture2D>("BackGrounds/animated/3");
         textures_["BackGroundAnimated4"] = content.Load<Texture2D>("BackGrounds/animated/4");
+
+
 
     }
 

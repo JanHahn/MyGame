@@ -40,7 +40,7 @@ public class Game1 : Game
     public Game1()
     {
         graphics_ = new GraphicsDeviceManager(this);
-        graphics_.IsFullScreen = false;
+        graphics_.IsFullScreen = true;
         graphics_.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
         graphics_.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
         graphics_.ApplyChanges();
@@ -123,7 +123,7 @@ public class Game1 : Game
         CoinSprite coinSprite_1 = new CoinSprite();
         coinSprite_1.framesQuantity = 10;
         coinSprite_1.spriteSheet = TextureManager.Get("GoldCoin1");
-        coinSprite_1.timeInterval = 0.1f;
+        coinSprite_1.timeInterval = 0.05f;
         coinSprite_1.X_OffSet = 0;
         coinSprite_1.Y_OffSet = 0;
 
@@ -134,7 +134,7 @@ public class Game1 : Game
 
 
         //Hud
-        hud_ = new Hud(GraphicsDevice);
+        hud_ = new Hud(GraphicsDevice, gameServices);
 
         //THIS IS THE MOMENT WHERE WE LOAD WHOLE WORLD!!! 
         chunkLoader = new ChunkLoader(gameServices, GraphicsDevice);
@@ -155,6 +155,7 @@ public class Game1 : Game
         myHero_.SpriiteAnimator.Update(gameTime);
         myHero_2.SpriiteAnimator.Update(gameTime);
         gameServices.CoinManager.updateCoinSprites(gameTime);
+        gameServices.CoinManager.CheckIfIntersects(gameServices.CollisionManager, myHero_, gameServices.GlobalDrawables);
         hud_.GetHealthBar.TestUpdate(gameTime);
         base.Update(gameTime);
     }

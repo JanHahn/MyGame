@@ -17,7 +17,11 @@ namespace MyGame;
 
 public class CoinManager
 {
-    public int AmountOfMoney { get; set; }
+    private int amountOfMoney;
+    public int AmountOfMoney
+    {
+        get { return amountOfMoney; }
+    }
 
     private List<Chunk> loadedChunksReference;
     public List<Chunk> LoadedChunkReference
@@ -35,12 +39,11 @@ public class CoinManager
     // In the future could be changed to List<CoinSpriteAnimator> in case we would want to saparate animation for each coin 
     public CoinSpriteAnimator spriteAnimator { get; set; }
 
-    private Hud hudReference;
 
 
     public CoinManager(CoinSpriteAnimator spriteAnimator)
     {
-        AmountOfMoney = 0;
+        amountOfMoney = 0;
         this.spriteAnimator = spriteAnimator;
     }
 
@@ -48,25 +51,39 @@ public class CoinManager
     //take all coins from chunk that are loaded currently and substract those coins that palyer already collected 
     public void UpdateCurrentInGameCoins()
     {
+        CurrentInGameCoins.Clear();
         foreach (var chunk in loadedChunksReference)
         {
             foreach (var coin in chunk.Coins)
             {
-                if (!collectedCoinsById.Contains(coin.Id)) {
+                if (!collectedCoinsById.Contains(coin.Id))
+                {
                     CurrentInGameCoins.Add(coin);
                 }
             }
         }
     }
 
-    // bool CheckIfIntersects(CollisionManager collisionManager,  Hero player)
-    // {
-
-    // }
-
-    private void CollectCoin()
+    public void CheckIfIntersects(CollisionManager collisionManager, Hero player, List<IPrintable> allDrawable)
+{
+    for (int i = CurrentInGameCoins.Count - 1; i >= 0; i--)
     {
+        var coin = CurrentInGameCoins[i];
+        if (collisionManager.CheckSingleIntersection(player, coin))
+        {
+            amountOfMoney += CollectCoin(coin, allDrawable);
+            Console.WriteLine(AmountOfMoney);
+        }
+    }
+}
 
+    //returns worth value of the coin
+    private int CollectCoin(Coin coin, List<IPrintable> allDrawable)
+    {
+        CurrentInGameCoins.Remove(coin);
+        allDrawable.Remove(coin);
+        collectedCoinsById.Add(coin.Id);
+        return coin.Worth;
     }
 
     public void updateCoinSprites(GameTime gameTime)

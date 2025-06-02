@@ -50,10 +50,12 @@
     <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/SamuraiCommander/Run.png</File>
     <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/SamuraiCommander/Walk.png</File>
     <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HerosSprites/tung_tung.png</File>
+    <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HUD/CoinIcon.png</File>
     <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HUD/HealthBar.png</File>
     <File>C:/Users/janek/my_shit/firstGame/MyGame/Content/HUD/InventoryBar.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

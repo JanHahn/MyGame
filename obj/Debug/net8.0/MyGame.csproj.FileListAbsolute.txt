@@ -106,3 +106,4 @@ c:\Users\janek\my_shit\firstGame\MyGame\bin\Debug\net8.0\Content\HerosSprites\tu
 c:\Users\janek\my_shit\firstGame\MyGame\bin\Debug\net8.0\Content\HUD\HealthBar.xnb
 c:\Users\janek\my_shit\firstGame\MyGame\bin\Debug\net8.0\Content\HUD\horizontal_type_1.xnb
 c:\Users\janek\my_shit\firstGame\MyGame\bin\Debug\net8.0\Content\HUD\InventoryBar.xnb
+c:\Users\janek\my_shit\firstGame\MyGame\bin\Debug\net8.0\Content\HUD\CoinIcon.xnb
