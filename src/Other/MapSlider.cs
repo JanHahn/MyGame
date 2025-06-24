@@ -31,13 +31,6 @@ public class MapSlider : IPrintable
     private int leftWrapPoint;
 
 
-    List<ICollidable> testList;
-    public List<ICollidable> TestList
-    {
-        get { return testList; }
-        set { testList = value; }
-    }
-
     public List<IPrintable> MapWorldObjects { get; set; }
 
     public ChunkLoader ChunkLoader { get; set; }

@@ -112,7 +112,6 @@ public class Game1 : Game
         gameServices.CollisionManager.Add(myHero_2);
 
         gameServices.MapSlider = new MapSlider(myHero_, graphics_.PreferredBackBufferWidth, graphics_.PreferredBackBufferHeight, chunkLoader);
-        gameServices.MapSlider.TestList = gameServices.CollisionManager.CollidableObjects;
         gameServices.MapSlider.MapWorldObjects = gameServices.GlobalDrawables;
 
         gameServices.gravitation = new Gravitation(gameServices.CollisionManager);
@@ -148,8 +147,8 @@ public class Game1 : Game
     protected override void Update(GameTime gameTime)
     {
         gameServices.MapSlider.Update(gameTime);
-        inputControll_.checkInput(myHero_, gameServices.gravitation, gameServices.CollisionManager);
-        inputControll_2.checkInput(myHero_2, gameServices.gravitation, gameServices.CollisionManager);
+        inputControll_.CheckInput(myHero_, gameServices.gravitation, gameServices.CollisionManager);
+        inputControll_2.CheckInput(myHero_2, gameServices.gravitation, gameServices.CollisionManager);
         //GameWorld.update(); -> zrobić coś takiego rzeby było czytelniej tutaj
         gameServices.gravitation.Update(gameTime);
         myHero_.SpriiteAnimator.Update(gameTime);
