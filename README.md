@@ -1,7 +1,5 @@
 # 2D Game (MonoGame)
 
-## Screenshots
-
 This project is a 2D game developed using the MonoGame framework and C#.
 
 The project implements object collision detection and sprite animation systems, forming the core mechanics of the game. 
